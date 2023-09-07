@@ -1,0 +1,44 @@
+if game.PlaceId == 14531793421 then
+ 
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "BaconBoss Hub | HQ DVOR AGENCY", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+
+getgenv().tpPlace = "string"
+
+function Teleport(teleportPlace)
+    local player = game.Players.LocalPlayer
+    player.Character.HumanoidRootPart.CFrame = teleportPlace
+end
+
+local MainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+MainTab:AddLabel("Note: This For The Second Quest")
+
+MainTab:AddButton({
+	Name = "Tp",
+	Callback = function()
+	    if getgenv().tpPlace == "First Part" then
+      	 Teleport(game:GetService("Workspace").Eggs.Pass1.Mesh.CFrame)
+		elseif getgenv().tpPlace == "Second Part" then
+         Teleport(game:GetService("Workspace").Eggs.Pass2.Mesh.CFrame)
+        elseif getgenv().tpPlace == "Third Part" then
+      	 Teleport(game:GetService("Workspace").Eggs.Pass3.Mesh.CFrame)
+	    end    
+    end
+}) 
+
+MainTab:AddDropdown({
+	Name = "Select",
+	Default = "First Part",
+	Options = {"First Part", "Second Part", "Third Part"},
+	Callback = function(Value)
+	    getgenv().tpPlace = Value  
+	end    
+})
+
+end
