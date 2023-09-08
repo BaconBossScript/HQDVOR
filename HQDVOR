@@ -4,6 +4,12 @@ if game.PlaceId == 14531793421 then
 	local Window = OrionLib:MakeWindow({Name = "BaconBoss Hub | HQ DVOR AGENCY", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 	
 	_G.inf = true
+	getgenv().tpPlace = "string"
+	
+	function Teleport(teleportPlace)
+		local player = game.Players.LocalPlayer
+		player.Character.HumanoidRootPart.CFrame = teleportPlace
+	end
 	
 	function inf()
 		 while _G.inf == true do 
@@ -28,20 +34,7 @@ if game.PlaceId == 14531793421 then
 			_G.inf = Value
 			inf()
 		end    
-	})
-	
-	getgenv().tpPlace = "string"
-	
-	function Teleport(teleportPlace)
-		local player = game.Players.LocalPlayer
-		player.Character.HumanoidRootPart.CFrame = teleportPlace
-	end
-	
-	local MainTab = Window:MakeTab({
-		Name = "Tp",
-		Icon = "rbxassetid://4483345998",
-		PremiumOnly = false
-	})
+	})	
 	
 	MainTab:AddLabel("Note: This For The Second Quest")
 	
@@ -49,11 +42,11 @@ if game.PlaceId == 14531793421 then
 		Name = "Tp",
 		Callback = function()
 			if getgenv().tpPlace == "First Part" then
-			   Teleport(game:GetService("Workspace").Eggs.Pass1.Mesh.CFrame)
+			   Teleport(game:GetService("Workspace").Eggz.Pass1.Mesh.CFrame)
 			elseif getgenv().tpPlace == "Second Part" then
-			 Teleport(game:GetService("Workspace").Eggs.Pass2.Mesh.CFrame)
+			 Teleport(game:GetService("Workspace").Eggz.Pass2.Mesh.CFrame)
 			elseif getgenv().tpPlace == "Third Part" then
-			   Teleport(game:GetService("Workspace").Eggs.Pass3.Mesh.CFrame)
+			   Teleport(game:GetService("Workspace").Eggz.Pass3.Mesh.CFrame)
 			end    
 		end
 	}) 
